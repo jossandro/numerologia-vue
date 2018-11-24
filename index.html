@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container fluid fill-height>
+          <v-layout align-center justify-center>
+            <v-flex xs12 sm8 md4>
+              <v-card class="elevation-12">
+                <v-toolbar dark color="primary">
+                  <v-toolbar-title>Numerologia Veicular</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                </v-toolbar>
+                <v-card-text>
+                  <v-form>
+                    <v-text-field prepend-icon="directions_car" v-model="regNumber" name="platenumber" label="Placa" type="text"></v-text-field>
+                  </v-form>
+                  <p v-if="mainNumber > 0" class="text-md-center">Seu numero é {{mainNumber}} </p>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <!-- <v-btn color="primary">Ver descrição</v-btn> -->
+                  <v-dialog v-model="dialog" width="600px">
+                    <v-btn slot="activator" color="primary">Ver descrição</v-btn>
+                    <v-card>
+                      <v-card-title>
+                        <span class="headline">O que a numerologia diz para sua placa?</span>
+                      </v-card-title>
+                      <v-card-text v-html="description"></v-card-text>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="blue darken-1" flat="flat" @click="dialog = false">Fechar</v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script>
+    new Vue({ 
+      el: '#app',
+      data: {
+        regNumber: '',
+        dialog: false
+      },
+      computed: {
+
+        mainNumber: function() {
+          let placa = this.regNumber
+          var sum = 0
+          for (var i = 0; i < placa.length; i++) {
+            var currentChar = placa.charCodeAt(i)
+            if(currentChar >= 48 && currentChar <= 57)  //verifica se é nro - ascci entre 48 e 57 são numeros de zero a nove
+              sum += currentChar - 48  //diminuir 48 para dar o valor do caractere e não seu valor ascii
+            else if (currentChar >= 65 && currentChar <= 90) //verifica se é letras - ascci entre 65 e 90 são letras maiusculas, 97 e 122 sao minusculas
+              sum += currentChar - 64
+            else if (currentChar >= 97 && currentChar <= 122)
+              sum += currentChar - 96
+
+          }  
+          while(sum > 9 ){
+              temp = sum.toString()
+              var pos = 0, nroTemp = 0
+              while(pos < temp.length){
+                  nroTemp += temp.charCodeAt(pos) - 48
+                  pos++
+              }
+              sum = nroTemp
+          }
+          return sum
+        },
+        
+        description: function() {
+          switch (this.mainNumber){
+            case 1:
+              return "Numerologia de carros com placa 1<br />" +
+                "Agressividade e competitividade no trânsito<br />" +
+                "<b>O APRESSADINHO</b><br />" +
+                "Uma placa de carro com resultado numerológico 1 é uma placa satisfatória, " +
+                "porém arriscada por trazer a energia da agressividade e da competitividade para o trânsito.<br />" +
+                "No lado positivo, um carro de placa 1 também traz facilidade para encontrar vagas, para estacionar " +
+                "e raramente precisa de oficina.<br />" +
+                "Este pode ser um carro diferente, com toque original, que reflita um traço peculiar de seu " +
+                "condutor, tal como um adesivo ou um acessório que seja a \"cara\" de seu dono.<br />" +
+                "<b>Número 1 no campo profissional</b><br />" +
+                "De acordo com a Numerologia do carro, a placa 1 favorece condutores que trabalhem com " +
+                "arquitetura, publicidade, indústrias extrativas e de exploração, pesquisas tecnológica " +
+                "ou biológica, informática e mineração.";
+            case 2:
+              return "Numerologia de carros com placa 2<br />" +
+                "Muito cuidado no trânsito e com o veículo<br />" +
+                "<b>UM CARRO PARA DOIS</b><br />" +
+                "Uma placa de carro com resultado numerológico 2 é uma placa dual, que tanto pode trazer insegurança " +
+                "para seus passageiros, com constantes problemas técnicos difíceis e potência diminuída, como " +
+                "pode trazer harmonia e calma no trânsito, indo para a oficina somente para fazer revisões de rotina. " +
+                "Vai da sorte do condutor.<br />" +
+                "Um carro de placa 2 pode ser excelente para casais ou uma boa opção para quem divide o automóvel " +
+                "com outra pessoa. Muitos taxistas dividem o preço de um carro e também o uso do mesmo, com cada " +
+                "dono dirigindo em determinado turno do dia.<br />" +
+                "Um proprietário de um carro de placa 2 irá tratá-lo com cuidado e amabilidade, usando o " +
+                "automóvel para conduzir diversas pessoas, podendo até mesmo ser usado como utilitário. " +
+                "O motorista será solícito oferecendo carona e será muito cuidadoso no trânsito e com o veículo.<br />" +
+                "<b>Número 2 no campo profissional</b><br />" +
+                "De acordo com a Numerologia do carro, a placa 2 favorece o usuário que trabalha com banco de " +
+                "dados, psicologia, área de saúde em geral, contabilidade, consultorias, advocacia, embaixadas " +
+                "e consulados.<br />";
+            case 3:
+              return "Numerologia de carros com placa 3<br />" +
+                "Sorte, lazer e alegria<br />" +
+                "<b>AUMENTA O SOM, GALERA!</b><br />" +
+                "Uma placa de carro com resultado numerológico 3 é muito interessante e favorável para qualquer " +
+                "pessoa, além de ser ideal para transportar crianças, pois o 3 é o símbolo da jovialidade.<br />" +
+                "Carros de placa 3 andam com mais facilidade e transmitem alegria e bom humor. Sempre na hora " +
+                "do aperto aparece um amigo que conserta (sem cobrar nada) e constantemente tem companhia no " +
+                "banco do carona.<br />" +
+                "Um carro de placa 3 combina com pessoas agitadas e extrovertidas, que gostam de gesticular " +
+                "no trânsito.<br />" +
+                "É um veículo constantemente usado para viagens de lazer e geralmente cheio de aparelhos " +
+                "tecnológicos modernos. A música será constante. O motorista deve ter cuidado com ultrapassagens " +
+                "arriscadas e lugares proibidos para estacionar.<br />" +
+                "<b>Numerologia para placas de carros número 3 no campo profissional</b><br />" +
+                "De acordo com a Numerologia do carro, a placa 3 favorece condutores que trabalhem com " +
+                "estética, beleza, moda, decoração, empresas de divulgação e marketing, gravadoras, relações " +
+                "públicas, agência de modelos, estúdios fotográficos, ateliê de pintura, comércio em geral " +
+                "e qualquer atividade que envolva arte.<br />" +
+                "Escolares voltados para o transporte infantil também estarão mais propícios de serem " +
+                "contratados se tiverem o 3 como soma do valor numérico das letras e algarismos da placa.<br />";
+            case 4:
+              return "Numerologia de carros com placa 4<br />" +
+                "Melhor ter um mecânico na família<br />" +
+                "<b>É A REBIMBOCA DA PARAFUSETA</b><br />" +
+                "Uma placa de carro com resultado numerológico 4 pode até não ser muito apropriada para os " +
+                "assuntos domésticos por causa dos possíveis problemas mecânicos e da constante necessidade " +
+                "de manutenção, mas é muito favorável para empresas, principalmente aquelas cujos " +
+                "funcionários precisam se locomover para fechar negócios, pois o número 4 sugere " +
+                "produtividade e desempenho profissional.<br />" +
+                "Automóveis de placa 4 são melhores também para os transportes coletivos (ônibus) e " +
+                "dificilmente são multados.<br />" +
+                "Um carro de placa 4 combina com pessoas detalhistas e exigentes, mas seus proprietários " +
+                " ter muito cuidado com seu funcionamento, pois são veículos  que apresentam facilmente " +
+                "problemas técnicos e também de documentação.<br />" +
+                "Um carro com placa 4 é um veículo que serve para trabalho e lazer, contanto que se tome " +
+                "os devidos cuidados.<br />" +
+                "<b>Numerologia para placas de carros número 4 no campo profissional</b><br />" +
+                "De acordo com a Numerologia do carro, a placa 4 favorece condutores que trabalhem com " +
+                "construção, manutenção, segurança, serviços públicos, agência de empregos, indústria " +
+                "de móveis, corretor de imóveis, estacionamentos, assistência técnica e prestação de " +
+                "serviços públicos.<br />";
+            case 5:
+              return "Numerologia de carros com placa 5<br />" +
+                "Melhor se for blindado<br />" +
+                "<b>FOI SÓ UM AMASSADINHO</b><br />" +
+                "Uma placa de carro com resultado numerológico 5 tem maior tendência para acidentes, roubos " +
+                "e batidas leves (aquelas que a franquia não cobre), pois são carros que estão em constante " +
+                "movimento e que geralmente rodam o dia todo, seja para ir ao trabalho ou para levar as " +
+                "crianças à escola ou atividades extracurriculares. A quilometragem de um carro de " +
+                "placa 5 tende a atingir um alto valor bem rapidamente.<br />" +
+                "Automóveis de placa 5 são feitos para aventura e no quesito velocidade não ficam nem um " +
+                "pouco atrás dos carros de placa 1.<br />" +
+                "Um carro de placa 5 combina com pessoas com gosto pelo novo e seu proprietário pode gostar " +
+                "de coisas modernas, enfeites e acessórios para personalizar o carro.<br />" +
+                "Mas deve-se, além de evitar situações de risco, também ter cuidado com excessos de " +
+                "velocidade e distrações ao volante, pois é comum carros de número 5 sofrerem acidentes " +
+                "por descuidos.<br />" +
+                "<b>Numerologia para placas de carros número 5 no campo profissional</b><br />" +
+                "De acordo com a Numerologia do carro, a placa 5 favorece condutores que trabalhem " +
+                "com recreação, lazer em geral, turismo, academias, casas noturnas, empresas de mudança, " +
+                "cassino, bingos, lotéricas, motéis e sex shops.<br />";
+            case 6:
+              return "Numerologia de carros com placa 6<br />" +
+                "A família em primeiro lugar<br />" +
+                "<b>O CARRO? EMPRESTEI!</b><br />" +
+                "Uma placa de carro com resultado numerológico 6 traz a energia da responsabilidade, do " +
+                "conforto, da tranquilidade, da estabilidade e tem a ver com bens e valores familiares.<br />" +
+                "Automóveis de placa 6 combinam muito bem com mulheres, mães e donas de casa. São carros " +
+                "sempre lembrados por familiares para pedir emprestado ou para conduzir alguém a um " +
+                "determinado local e são bastante apropriados para serviços sociais, burocráticos e médicos.<br />" +
+                "Uma placa 6 será sempre compatível para ambulâncias, carros de emergência, de reboque ou do " +
+                "governo, E ainda para empresas da área de saúde, tais como da indústria farmacêutica ou mesmo " +
+                "de laboratórios que vão até os pacientes coletar sangue e fazer exames.<br />" +
+                "Um carro de placa 6 combina com pessoas amáveis, gentis e cuidadosas. Geralmente são veículos " +
+                "usados pela família, seus condutores gostam de levar amigos e companhias. O carro estará " +
+                "sempre limpo, arrumado e em bom estado de funcionamento.<br />" +
+                "<b>Numerologia para placas de carros número 6 no campo profissional</b><br />" +
+                "De acordo com a Numerologia do carro, a placa 6 favorece condutores que trabalhem com " +
+                "restaurante, escola de educação, hotel, paisagismo e jardinagem, clínica de repouso, creche, " +
+                "berçário, floricultura, padaria, doceria, pet shop, adestramento, buffet e comércio de " +
+                "presente e decorações.<br />";
+            case 7:
+              return "Numerologia de carros com placa 7<br />" +
+                "Fé em Deus e pé na estrada<br />" +
+                "<b>INTUIÇÃO É INDISPENSÁVEL</b><br />" +
+                "Uma placa de carro com resultado numerológico 7 está sob os aspectos da proteção divina, " +
+                "mas seus condutores precisam estar em equilíbrio com estas forças para aproveitarem " +
+                "melhor esta vibração.<br />" +
+                "Automóveis de placa 7 são energeticamente protegidos e mesmo quando são esquecidos " +
+                "abertos ninguém percebe. Bom também quando se trata de acidentes no trânsito, um " +
+                "veículo de número 7 curiosamente vira sempre uma rua antes do engavetamento ou escapa " +
+                "de algum risco na estrada.<br />" +
+                "No lado negativo, uma placa 7 pode apresentar problemas técnicos e barulhinhos de " +
+                "difícil identificação.<br />" +
+                "Um carro de placa 7 combina com pessoas reservadas e introspectivas que não gostam " +
+                "de oferecer carona ou levar grupos. Seus condutores possivelmente também não gostarão " +
+                "de conversar enquanto dirigem e serão muito cuidadosos no trânsito.<br />" +
+                "<b>Numerologia para placas de carros número 7 no campo profissional</b><br />" +
+                "De acordo com a Numerologia do carro, a placa 7 favorece condutores que trabalhem " +
+                "com templos, igrejas, espaços esotéricos, livrarias, bibliotecas, detetives, sebos, " +
+                "bancas de jornal e revista e laboratórios químicos. " +
+                "Bom também para carros de autoescolas.<br />";
+            case 8:
+              return "Numerologia de carros com placa 8<br />" +
+                "Ter e ninguém ver é igual a não ter<br />" +
+                "<b>É STATUS</b><br />" +
+                "Uma placa de carro com resultado numerológico 8 traz riscos de acidentes por sua " +
+                "impulsividade e seu proprietário deve sempre manter a documentação em ordem, prestando " +
+                "muita atenção na sinalização de placas e regulamentos gerais do trânsito, pois a " +
+                "vibração do 8 chama a atenção de guardas e fiscalizadores.<br />" +
+                "Automóveis de placa 8 geralmente são carros duráveis, de boas marcas e sempre de ano " +
+                "novo ou muito bem conservado.<br />" +
+                "Uma placa 8 é uma boa indicação para quem trabalha utilizando seu próprio veículo, pois " +
+                "pode auxiliar a ter mais lucros e sucesso nos negócios.<br />" +
+                "Um carro de placa 8 combina com pessoas que gostem de mostrar o que possuem. Valorizam " +
+                "o status e gostam de dar carona principalmente para mostrarem os diferenciais do " +
+                "carro e, assim, impressionar a plateia.<br />" +
+                "<b>Numerologia  placa  8 no campo profissional</b><br />" +
+                "De acordo com a Numerologia do carro, a placa 8 favorece condutores que trabalhem " +
+                "com bolsa de valores, corretoras, bancos comerciais e de investimentos, distribuidoras " +
+                "de valores, tabelião, cartórios, empresas de crédito imobiliário, franquias " +
+                "multinacionais e editoras.<br />";
+            case 9:
+              return "Numerologia de carros com placa 9<br />" +
+                "Relaxa que a estrada é longa<br />" +
+                "<b>TÁ TUDO CERTO, PODE CONFIAR</b><br />" +
+                "Assim como no caso do número 7, uma placa de carro com resultado numerológico 9 também " +
+                "está sob os aspectos da proteção divina, mas seus condutores precisam estar " +
+                "conectados com estas forças para aproveitarem melhor a vibração.<br />" +
+                "Automóveis de placa 9 sempre estão a serviço do outro. É um carro que poderá estar " +
+                "mais nas mãos de familiares ou amigos que nas mãos do dono.<br />" +
+                "Uma placa 9 é muito recomendada em carros que são utilizados para longas viagens, " +
+                "inclusive de estado para estado, ou a serviço de alguma causa ideológica, como os " +
+                "automóveis de partidos políticos e instituições de caridade.<br />" +
+                "Um carro de placa 9 combina com pessoas desprendidas, generosas, mas um pouco " +
+                "descuidadas, com tendência para estacionar e esquecer onde. Geralmente o carro " +
+                "serve para vários fins, pessoais e de grupos, podendo ser útil também para o " +
+                "transporte coletivo.<br />" +
+                "<b>Numerologia para placas  9 no campo profissional</b><br />" +
+                "De acordo com a Numerologia do carro, a placa 9 favorece condutores que trabalhem " +
+                "com empresas ligadas a área social, farmácias, hospitais, postos de saúde, fundações, " +
+                "associações de classes e beneficentes, sindicatos, orfanatos e asilos.<br />";
+            default:
+              return "Placa não reconhecida: "+this.regNumber;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
