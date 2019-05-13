@@ -1,4 +1,4 @@
-var soul = {
+var soulTxt = {
 	1 : 'Você traz um grande espírito de iniciativa e liderança, desenvolvido ao longo das suas vidas passadas. ' +
 		'Você vivenciou um grande destaque na sociedade, nos negócios ou até no esporte e na cultura.' + 
 		'Você gosta de traçar seus caminhos e prefere agir sozinho, tendo dificuldade em aceitar a opinião dos outros. Você aprendeu a ser individualista, lutando obstinadamente pelas suas convicções. Não suporta imposições, preferindo estabelecer e seguir suas próprias regras.' +
@@ -8,65 +8,72 @@ var soul = {
         'Você deve tirar proveito desse seu potencial de companheirismo e diplomacia para obter sucesso em tudo aquilo que faz, evitando assim que a indecisão e a insegurança atrapalhem a concretização de seus planos.',
     3 : 'Ao longo de suas vidas passadas, aprendeu a não se abater diante dos problemas e sempre procurou encontrar o lado bom da vida. A alegria, o espírito desarmado e o otimismo foram seus traços marcantes.' +
         'Ser feliz é fazer os outros felizes: esse é o seu lema. Seu sorriso estampado no rosto e seu estilo espirituoso são envolventes. Desenvolveu um grande poder de comunicação e uma criatividade aguçada. Nos momentos mais difíceis consegue minimizar o sofrimento, confortando os mais entristecidos. Se o ambiente estiver descontraído, melhor ainda: aí é que você se solta, contagiando os que estão à volta.' +
-        'Você deve capitalizar seu bom humor e otimismo com vistas a atingir os seus objetivos, evitando a superficialidade, a mentira, o narcisismo e a propensão a fazer fofocas, defeitos que podem se manifestar a qualquer hora.'
+        'Você deve capitalizar seu bom humor e otimismo com vistas a atingir os seus objetivos, evitando a superficialidade, a mentira, o narcisismo e a propensão a fazer fofocas, defeitos que podem se manifestar a qualquer hora.',
+    4 : 'Ao longo de suas vidas passadas, acumulou um grande espírito prático voltado ao trabalho bem feito. Exigente e perfeccionista, aprendeu a agir de forma organizada e sem precipitação.' +
+    	'Aprendeu a trabalhar com eficiência e colhendo bons resultados, pois costuma lograr êxito, principalmente material, em tudo aquilo que faz. Desde a decoração de sua casa até o desenvolvimento de um projeto, é cauteloso e não costuma se envolver em aventuras perigosas. Aprendeu a ser prudente, considerando primeiro os obstáculos a serem transpostos para depois avaliar os benefícios.' +
+    	'Você deve assumir aquilo que verdadeiramente é: Trabalhador, eficiente e meticuloso. Não deve ficar preocupado com acusações e ciúmes, caso contrário pode enveredar para o caminho da improdutividade, negligência e medo.',
+    5 : 'Você traz um amor pela liberdade desenvolvido ao longo de suas vidas passadas. Nunca aceitou que alguém interferisse nas suas decisões. Ser feliz, para você, é poder ir e vir. O excesso de rotina o deixa irritado, pois você prefere o inusitado, o surpreendente e o inesperado.' +
+    	'Foge sempre da monotonia; seu desejo insaciável de viajar vem da sua vivência e da sua necessidade de liberdade. É atraído por novas perspectivas. Aventuras não-convencionais o seduzem.' +
+    	'Você desenvolveu muitos talentos e possui diversos interesses. Sua mente é brilhante, e sua curiosidade faz com que explore novas idéias sem preconceitos. Deve tomar cuidado caso esteja com dificuldade momentânea de expressar esse seu jeito de ser, para não sucumbir ao vício (drogas, alcoolismo, jogo, etc.) e a atitudes irresponsáveis.',
+	6 : 'Você traz um espírito de enorme responsabilidade voltado para a harmonia, desenvolvido ao longo de suas vidas passadas. Fiel no casamento, dedica-se com louvor ao bem-estar e à felicidade daqueles que o cercam.' +
+		'Tem uma sensibilidade muito aguçada e é capaz de restabelecer a paz entre aqueles que estão à sua volta. Cumpre seus deveres com primazia e não foge aos seus compromissos. Prefere trabalhar em grupo a trabalhar de forma individual.' +
+		'Você deve aproveitar o dom que possui e construir assim um mundo mais harmônico e justo. No entanto, tome cuidado para não se tornar um possessivo.',
+	7 : 'Você traz a sabedoria e a justiça desenvolvidas ao longo de suas vidas passadas. Procurou sempre analisar os fatos com profundidade para então chegar a uma conclusão que o levasse a ações seguras.' + 
+		'Não gosta que pairem dúvidas sobre suas atitudes. Consegue através da busca da espiritualidade uma forma de iluminar os seus caminhos. A retidão na conduta é mais importante que o prazer.' +
+		'Prefere as companhias que gostem de filosofar sobre a vida e muitas vezes gosta de ficar só. E aí, sozinho, encontra na introspecção a oportunidade de questionar e analisar tudo que o cerca. Você aprendeu a entrar em sintonia com você mesmo, desenvolvendo seus próprios recursos.' +
+		'Você deve aproveitar sua espiritualidade e seu senso refinado de justiça para conquistar seu espaço, mas não pode descuidar, pois tende a entrar em melancolia.',
+	8 : 'Você aprendeu os benefícios de uma rígida disciplina, inteligência e eficiência desenvolvidas ao longo de suas vidas passadas, quando teve a oportunidade de colocar sua habilidade executiva em ação. Sua ambição e perspicácia o habilitam a organizar empreendimentos de vulto e abraçar grandes causas.' +
+		'Sua determinação e sua vitalidade física contribuem para que exerça uma grande liderança nas atividades de que toma parte. É grande o seu desejo de ocupar altas posições e obter prosperidade material. Você é dotado de muita energia, mas precisa aprender a aceitar seus próprios erros e a não exigir demais de si próprio.' +
+		'Você deve aproveitar toda sua disposição e capacidade de liderança, e controlar o lado materialista, a intolerância, e em especial a sede de poder.',
+	9 : 'Você traz a generosidade e o espírito humanitário desenvolvido ao longo das suas vidas passadas. Ficou sempre à disposição dos outros, colocando seus próprios assuntos em segundo plano.' +
+		'Você aprendeu a se doar em favor da comunidade ou daqueles que mais estima. Abraçou uma causa humanitária, dando não só seu afeto como também seu conhecimento e experiência. É prestativo e coloca-se à disposição para ajudar a resolver qualquer problema. Amigo dedicado e bom amante, consegue manter relacionamentos sólidos por muito tempo.' +
+		'Você deve explorar sua capacidade em situações onde pode ser generoso e onde pode usar seus talentos criativos. Controle suas emoções, caso contrário, terá dificuldade em atingir os seus objetivos.',
+	11: 'Ao longo de suas vidas passadas, desenvolveu a sabedoria e a compreensão, com forte inclinação à espiritualidade. Aprendeu a ter coragem diante de situações inesperadas.' +
+        'De fato, pode aplicar inúmeras vezes o seu conhecimento espiritual nos mais diversos campos, e à medida que for adquirindo mais sabedoria poderá, com seu idealismo, influenciar as outras pessoas. Poderá ser muito requisitado como conselheiro e confidente.' +
+        'Possui uma visão ampla do mundo à sua volta, devendo dedicar-se à realidade e evitando portanto cair numa vida visionária destituída de senso prático.' +
+        'No entanto, caso você não tenha conseguido viver à altura das vibrações deste Número Mestre, o seu Número de Alma é o 2, que é derivado de 1 + 1.',
+    22: 'Ao longo de suas vidas passadas, aprendeu a ter consciência e percepção superiores e a agir como um mestre-construtor querendo interferir na realidade, corrigindo os erros e aparando as arestas, pelo bem e a segurança de todos.' +
+        'Idealista, tem uma inteligência privilegiada, espírito de liderança e uma inabalável capacidade de conquistar grandes vitórias em todos os campos de atuação. Tem sempre como meta contribuir para a construção de um mundo melhor.' +
+        'No entanto, caso você não tenha conseguido viver à altura das vibrações deste Número Mestre, o seu Número de Alma é o 4, que é derivado de 2 + 2.',
+    33: 'Ao longo de suas vidas passadas, aprendeu a dirigir sua vida em função do próximo, iluminando o caminho de todos, sacrificando a sua vida particular e inspirando a criação de organizações com fins humanitários.' +
+        'Paciente e caridoso, é despojado de qualquer apego material. Possui uma humildade impar e uma grande capacidade de compreender o próximo, o que o torna uma pessoa rara.' +
+		'No entanto, caso você não tenha conseguido viver à altura das vibrações deste Número Mestre, o seu Número de Alma é o 6, que é derivado de 3 + 3.'
 };
- 
-NÚMERO DA ALMA – 4
-            Ao longo de suas vidas passadas, acumulou um grande espírito prático voltado ao trabalho bem feito. Exigente e perfeccionista, aprendeu a agir de forma organizada e sem precipitação.
-            Aprendeu a trabalhar com eficiência e colhendo bons resultados, pois costuma lograr êxito, principalmente material, em tudo aquilo que faz. Desde a decoração de sua casa até o desenvolvimento de um projeto, é cauteloso e não costuma se envolver em aventuras perigosas. Aprendeu a ser prudente, considerando primeiro os obstáculos a serem transpostos para depois avaliar os benefícios.
-            Você deve assumir aquilo que verdadeiramente é: Trabalhador, eficiente e meticuloso. Não deve ficar preocupado com acusações e ciúmes, caso contrário pode enveredar para o caminho da improdutividade, negligência e medo.
- 
-  
-NÚMERO DA ALMA – 5
-Você traz um amor pela liberdade desenvolvido ao longo de suas vidas passadas. Nunca aceitou que alguém interferisse nas suas decisões. Ser feliz, para você, é poder ir e vir. O excesso de rotina o deixa irritado, pois você prefere o inusitado, o surpreendente e o inesperado.
-            Foge sempre da monotonia; seu desejo insaciável de viajar vem da sua vivência e da sua necessidade de liberdade. É atraído por novas perspectivas. Aventuras não-convencionais o seduzem.
-            Você desenvolveu muitos talentos e possui diversos interesses. Sua mente é brilhante, e sua curiosidade faz com que explore novas idéias sem preconceitos. Deve tomar cuidado caso esteja com dificuldade momentânea de expressar esse seu jeito de ser, para não sucumbir ao vício (drogas, alcoolismo, jogo, etc.) e a atitudes irresponsáveis.
- 
- 
-NÚMERO DA ALMA – 6
-            Você traz um espírito de enorme responsabilidade voltado para a harmonia, desenvolvido ao longo de suas vidas passadas. Fiel no casamento, dedica-se com louvor ao bem-estar e à felicidade daqueles que o cercam.
-            Tem uma sensibilidade muito aguçada e é capaz de restabelecer a paz entre aqueles que estão à sua volta. Cumpre seus deveres com primazia e não foge aos seus compromissos. Prefere trabalhar em grupo a trabalhar de forma individual.
-            Você deve aproveitar o dom que possui e construir assim um mundo mais harmônico e justo. No entanto, tome cuidado para não se tornar um possessivo.
- 
- 
- 
-NÚMERO DA ALMA – 7
-            Você traz a sabedoria e a justiça desenvolvidas ao longo de suas vidas passadas. Procurou sempre analisar os fatos com profundidade para então chegar a uma conclusão que o levasse a ações seguras.
-            Não gosta que pairem dúvidas sobre suas atitudes. Consegue através da busca da espiritualidade uma forma de iluminar os seus caminhos. A retidão na conduta é mais importante que o prazer.
-            Prefere as companhias que gostem de filosofar sobre a vida e muitas vezes gosta de ficar só. E aí, sozinho, encontra na introspecção a oportunidade de questionar e analisar tudo que o cerca. Você aprendeu a entrar em sintonia com você mesmo, desenvolvendo seus próprios recursos.
-            Você deve aproveitar sua espiritualidade e seu senso refinado de justiça para conquistar seu espaço, mas não pode descuidar, pois tende a entrar em melancolia.
- 
- 
-NÚMERO DA ALMA – 8
-            Você aprendeu os benefícios de uma rígida disciplina, inteligência e eficiência desenvolvidas ao longo de suas vidas passadas, quando teve a oportunidade de colocar sua habilidade executiva em ação. Sua ambição e perspicácia o habilitam a organizar empreendimentos de vulto e abraçar grandes causas.
-            Sua determinação e sua vitalidade física contribuem para que exerça uma grande liderança nas atividades de que toma parte. É grande o seu desejo de ocupar altas posições e obter prosperidade material. Você é dotado de muita energia, mas precisa aprender a aceitar seus próprios erros e a não exigir demais de si próprio.
-            Você deve aproveitar toda sua disposição e capacidade de liderança, e controlar o lado materialista, a intolerância, e em especial a sede de poder.
- 
- 
- 
-NÚMERO DA ALMA – 9
-            Você traz a generosidade e o espírito humanitário desenvolvido ao longo das suas vidas passadas. Ficou sempre à disposição dos outros, colocando seus próprios assuntos em segundo plano.
-            Você aprendeu a se doar em favor da comunidade ou daqueles que mais estima. Abraçou uma causa humanitária, dando não só seu afeto como também seu conhecimento e experiência. É prestativo e coloca-se à disposição para ajudar a resolver qualquer problema. Amigo dedicado e bom amante, consegue manter relacionamentos sólidos por muito tempo.
-            Você deve explorar sua capacidade em situações onde pode ser generoso e onde pode usar seus talentos criativos. Controle suas emoções, caso contrário, terá dificuldade em atingir os seus objetivos.
- 
- 
-NÚMERO DA ALMA – 11
-            Ao longo de suas vidas passadas, desenvolveu a sabedoria e a compreensão, com forte inclinação à espiritualidade. Aprendeu a ter coragem diante de situações inesperadas.
-            De fato, pode aplicar inúmeras vezes o seu conhecimento espiritual nos mais diversos campos, e à medida que for adquirindo mais sabedoria poderá, com seu idealismo, influenciar as outras pessoas. Poderá ser muito requisitado como conselheiro e confidente.
-            Possui uma visão ampla do mundo à sua volta, devendo dedicar-se à realidade e evitando portanto cair numa vida visionária destituída de senso prático.
-            No entanto, caso você não tenha conseguido viver à altura das vibrações deste Número Mestre, o seu Número de Alma é o 2, que é derivado de 1 + 1.
- 
- 
-NÚMERO DE ALMA – 22
-            Ao longo de suas vidas passadas, aprendeu a ter consciência e percepção superiores e a agir como um mestre-construtor querendo interferir na realidade, corrigindo os erros e aparando as arestas, pelo bem e a segurança de todos.
-            Idealista, tem uma inteligência privilegiada, espírito de liderança e uma inabalável capacidade de conquistar grandes vitórias em todos os campos de atuação. Tem sempre como meta contribuir para a construção de um mundo melhor.
-            No entanto, caso você não tenha conseguido viver à altura das vibrações deste Número Mestre, o seu Número de Alma é o 4, que é derivado de 2 + 2.
- 
- 
- 
-NÚMERO DE ALMA – 33
-            Ao longo de suas vidas passadas, aprendeu a dirigir sua vida em função do próximo, iluminando o caminho de todos, sacrificando a sua vida particular e inspirando a criação de organizações com fins humanitários.
-            Paciente e caridoso, é despojado de qualquer apego material. Possui uma humildade impar e uma grande capacidade de compreender o próximo, o que o torna uma pessoa rara.
-No entanto, caso você não tenha conseguido viver à altura das vibrações deste Número Mestre, o seu Número de Alma é o 6, que é derivado de 3 + 3.
- 
- 
+
+var imageTxt = {
+	1 : 'Você transmite uma imagem de liderança, independência e autoconfiança que indica a capacidade de enfrentar adversidades. Por isso você será procurado para cuidar de projetos em que essas qualidades sejam necessárias. Os outros vêem em você uma capacidade para assumir o controle de qualquer situação, dirigindo com incomparável eficiência e organização. Se agir com equilíbrio será um líder empreendedor e poderá contar com a confiança e o apoio de seus comandados.' +
+		'Caso você esteja manifestando os aspectos negativos desse Número, procure melhorar o seu tato, adquirindo um espírito mais diplomático e agindo com mais paciência para não correr o risco de parecer uma pessoa autoritária e egoísta.',
+	2 : 'Você transmite uma imagem de pessoa prestativa, companheira e de grande espírito diplomático. Procura seguir um líder e não gosta de ser o centro das atenções, agindo geralmente nos bastidores.' +
+		'Os outros vêem  em você alguém com uma preocupação exagerada com a opinião alheia e muita sutileza na sua capacidade de persuasão sobre aqueles que o cercam, jamais demonstrando um comportamento autoritário. É também visto como uma pessoa equilibrada e discreta até na forma de se vestir, e que necessita de um ambiente tranqüilo para atuar positivamente.' +
+		'Caso você esteja manifestando os aspectos negativos desse Número, deve procurar acreditar mais em você para não parecer insegura diante de situações que não domina.',
+	3 : 'Você transmite uma imagem de alegria, afeto e otimismo. Não gosta de perder nenhuma festa, em especial aquelas onde pode dar vazão ao seu talento artístico, ao seu espírito comunicativo e ao seu charme.' +
+		'As pessoas vêem em você uma pessoa descontraída, imbuída de um incomparável senso de humor. O estilo maleável e a mente fértil dão a essa personalidade condições de tomar parte de qualquer negócio. É sempre bem-vindo, pois contagia a todos e mesmo nos momentos mais difíceis consegue encontrar um lado positivo, ou pelo menos tirar uma lição do que está acontecendo.' +
+		'Caso você esteja manifestando os aspectos negativos desse Número, deverá demonstrar seriedade para que não seja visto como uma pessoa fofoqueira, imatura e que age de maneira irresponsável em qualquer situação.',
+	4 : 'Você transmite uma imagem de solidez e eficiência. Sustenta uma aparência de pessoas confiável e produtiva. Não gosta de superficialidade, desonestidade e covardia.' +
+		'Os outros vêem você como alguém que tem uma grande capacidade produtiva e age com muita prudência. Jamais se deixa envolver por propostas levianas e sedutoras, esforçando-se para cumprir seus compromissos. Fiel a regulamentos e normas, é pontual e gosta de seguir uma rotina. Demonstra um apego aos bons costumes: conservador, prefere vestir-se de forma sóbria e clássica, sem nenhuma extravagância.' +
+		'Mas se você estiver manifestando os aspectos negativos desse Número, deve procurar aceitar mais as opiniões dos outros para não parecer inflexível, demasiadamente controlador e apegado a detalhes. ',
+	5 : 'Você transmite uma imagem de pessoa curiosa e impaciente, marcadamente na infância. Na adolescência é visto como amante da aventura, e na fase adulta manifesta um espírito dinâmico.' +
+		'As pessoas vêem em você alguém avesso à rotina. Que gosta de assumir riscos. Atrai as pessoas com o seu magnetismo, e tem muito senso prático. O passado já ficou para trás, o futuro algum dia chegará; o que importa mesmo é o presente, o que está acontecendo agora. Gosta de liberdade, ambientes novos e não recusa nenhum convite para viagens.' +
+		'Mas se você estiver manifestando os aspectos negativos deste Número, deve procurar ser mais paciente, concentrando-se naquilo que faz: só assim evitará dispersar suas energias. Sua grande sensualidade pode dificultar a manutenção de relacionamentos fiéis e duradouros.',
+	6 : 'Quando criança, demonstra uma propensão a desenvolver no futuro trabalhos intelectuais e uma rejeição a atividades que gerem desgastes físico.' +
+		'Os outros o vêem como uma pessoa intelectualmente dotada, com uma intuição aguçada e intensamente voltada para a vida espiritual. Você parece solitário, absorvido pelos seus pensamentos. Tem uma aparência distinta e refinada e veste-se com sobriedade. Transmite uma aversão a intimidades e brincadeiras fora de hora. Pode ser atraído por atividades excêntricas.' +
+		'Mas se estiver manifestando os aspectos negativos desse Número, você aparentará ser uma pessoa que prefere ficar isolada, não confiando nos outros e centrando-se em si própria.',
+	7 : 'Quando criança, demonstra uma propensão a desenvolver no futuro trabalhos intelectuais e uma rejeição a atividades que gerem desgastes físico.' +
+		'Os outros o vêem como uma pessoa intelectualmente dotada, com uma intuição aguçada e intensamente voltada para a vida espiritual. Você parece solitário, absorvido pelos seus pensamentos. Tem uma aparência distinta e refinada e veste-se com sobriedade. Transmite uma aversão a intimidades e brincadeiras fora de hora. Pode ser atraído por atividades excêntricas.' +
+		'Mas se estiver manifestando os aspectos negativos desse Número, você aparentará ser uma pessoa que prefere ficar isolada, não confiando nos outros e centrando-se em si própria.',
+	8 : 'Quando criança, transmite uma imagem de pessoa prestativa e trabalhadora, cuidando com muito zelo de seus pertences, em especial do dinheiro. Já na fase adulta demonstra um interesse por projetos ambiciosos, nos quais possa assumir o controle e atingir rapidamente a independência financeira.' +
+		'Você aparenta ter muita vitalidade e disposição em toda atividade que participa, tanto profissional como assistencial, ou mesmo em situações emergenciais. Tem aparência de gente bem sucedida, preocupada em causar boa impressão, dispensando artigos baratos e optando sempre pelo que está na moda, em especial produtos de grife.' +
+		'Mas se você estiver manifestando os aspectos negativos desse Número, parecerá uma pessoa autoritária, excessivamente crítica e imbuída de um forte espírito de competição.',
+	9 : 'Desde criança transmite grande preocupação pelo próximo, dividindo seu lanche na escola e dando brinquedos ou roupas para aqueles que mais necessitam. Sonha com profissões em que possa ajudar os outros, tais como de médico ou bombeiro, ou com atividades altamente rentáveis, para que tenha condições de construir um mundo melhor.' +
+		'Os outros vêem você alguém com um talento especial, com um desejo de ajudar todos sem esperar nenhuma recompensa. Você é desprovido de qualquer preconceito. As pessoas o reconhecem pelo seu espírito hospitaleiro e afetuoso; você luta não só pelos seus ideais mas também pelos dos outros. Mas se estiver manifestando os aspectos negativos desse Número, você parecerá uma pessoa pouco confiável, lenta na tomada de decisões, exatamente porque não consegue julgar com a razão. Pode também parecer uma pessoa egoísta e perdida na busca de objetivos utópicos.',
+	11: 'Você apresenta no começo da vida muitos medos e dúvidas em relação à sua intuição, assim como manifestações extra sensoriais. Com o tempo, após muito estudo e dedicação, vai adquirindo confiança para expressar o potencial que adquiriu durante as suas vidas.' +
+		'Os outros vêem em você alguém que está sempre à procura de Paz e Harmonia entre os Homens. Seu espírito de liderança se manifesta de forma pacífica, imbuído dos mais elevados ideais. Você atrai a atenção ao falar e agir, servindo como exemplo. Sua imagem o dirige para as áreas da arte, psicologia e diplomacia. Tem uma tendência especial para as artes na televisão.' +
+		'Mas quem tem esse Número só conseguirá orientar e ensinar a todos como um verdadeiro mestre se agir com humildade. Caso você não esteja conseguindo viver à altura das vibrações deste Número Mestre, estará projetando uma imagem de grande dependência, distanciamento da realidade e obsessão por suas fantasias.',
+	22: 'Você transmite uma imagem de quem procura alcançar o sucesso no plano material para revertê-lo também em projetos humanitários e filantrópicos.' +
+		'As pessoas vêem em você muita paciência e perseverança. É admirado pelo seu espírito diplomático e refinado, superando os problemas que surgem com eficiência e praticidade. Faz o melhor que pode para chegar ao seu objetivo. É determinado. É muito procurado porque transmite uma imagem de quem resolve os problemas de maneira prática e criativa.' +
+		'Caso você não esteja conseguindo viver à altura das vibrações deste Número Mestre, poderá demonstrar ser uma pessoa centrada no trabalho, negligenciando tudo à sua volta, até mesmo a sua família.',
+	33: 'Se estiver realizando esse Número Mestre de forma plena, transmitirá uma imagem de humildade e generosidade ímpar. Demonstra que sempre coloca o seu amor, o seu tempo e todos os seus bens materiais à disposição dos outros. Tal idealismo humanitário se manifesta de várias formas, desde participações em projetos grandiosos até situações mais simples, como recolher um animalzinho doente da rua e levá-lo para casa.' +
+		'As pessoas vêem em você alguém dotado de uma grande humildade e amor fraternal. Procura ajudar o próximo sem querer receber nada em troca, nem mesmo um simples elogio.' +
+		'Caso você não esteja conseguindo viver à altura das vibrações deste Número Mestre, poderá parecer alguém completamente fora de sintonia com a realidade e fora do mundo em que vive.'
+};
+
