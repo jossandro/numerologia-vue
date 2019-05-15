@@ -32,7 +32,7 @@
                   <v-spacer></v-spacer>
                   <!-- <v-btn color="primary">Ver descrição</v-btn> -->
                   <v-dialog v-model="dialogSoul" width="600px">
-                    <v-btn slot="activator" color="primary" class= "ma-2">Ver Alma</v-btn>
+                    <v-btn slot="activator" color="primary" class= "ma-2">Alma</v-btn>
                     <v-card>
                       <v-card-title>
                         <span class="headline">A ALMA de {{fullName}}?</span>
@@ -45,7 +45,7 @@
                     </v-card>
                   </v-dialog>
                   <v-dialog v-model="dialogImage" width="600px">
-                    <v-btn slot="activator" color="primary">Ver Imagem</v-btn>
+                    <v-btn slot="activator" color="primary" class= "ma-2">Imagem</v-btn>
                     <v-card>
                       <v-card-title>
                         <span class="headline">A Imagem de {{fullName}}?</span>
@@ -54,6 +54,32 @@
                       <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn color="blue darken-1" flat="flat" @click="dialogImage = false">Fechar</v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                  <v-dialog v-model="dialogDestiny" width="600px">
+                    <v-btn slot="activator" color="primary" class= "ma-2">Destino</v-btn>
+                    <v-card>
+                      <v-card-title>
+                        <span class="headline">O destino de {{fullName}}?</span>
+                      </v-card-title>
+                      <v-card-text v-html="descriptionDestiny"></v-card-text>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="blue darken-1" flat="flat" @click="dialogDestiny = false">Fechar</v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                  <v-dialog v-model="dialogCO" width="600px">
+                    <v-btn slot="activator" color="primary" class= "ma-2">Lição de Vida</v-btn>
+                    <v-card>
+                      <v-card-title>
+                        <span class="headline">A lição de vida de {{fullName}}?</span>
+                      </v-card-title>
+                      <v-card-text v-html="descriptionCaminhoDeOrigem"></v-card-text>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="blue darken-1" flat="flat" @click="dialogCO = false">Fechar</v-btn>
                       </v-card-actions>
                     </v-card>
                   </v-dialog>
@@ -155,7 +181,18 @@
 
         descriptionImage: function() {
           return imageTxt[this.image]
+        },
+
+        descriptionDestiny: function() {
+          return destinyTxt[this.destiny]
+        },
+
+        descriptionCaminhoDeOrigem: function() {
+          console.log('nro caminhoDeOrigem', this.caminhoDeOrigem)
+          console.log('TXT caminhoDeOrigem', caminhoDeOrigemTxt[this.caminhoDeOrigem])
+          return caminhoDeOrigemTxt[this.caminhoDeOrigem]
         }
+        
       },
       methods: {
         vowel: function(letra) {
