@@ -28,11 +28,21 @@
                   <p v-if="destiny" class="text-md-center">Destino: {{destiny}} </p>
                   <p v-if="destiny" class="text-md-center">Caminho de Origem: {{caminhoDeOrigem}} </p>
                 </v-card-text>
+                <v-layout row justify-center>
+                  <v-btn color="primary" dark @click.stop="dialogSoul = true" color="primary" class= "ma-2">Alma</v-btn>  <!-- slot="activator" -->
+                </v-layout>
+                <v-layout row justify-center>
+                  <v-btn @click.stop="dialogImage = true" color="primary" class= "ma-2">Imagem</v-btn>
+                </v-layout>
+                <v-layout row justify-center>
+                  <v-btn @click.stop="dialogDestiny = true" color="primary" class= "ma-2">Destino</v-btn>
+                </v-layout>
+                <v-layout row justify-center>
+                  <v-btn @click.stop="dialogCO = true" color="primary" class= "ma-2">Lição de Vida</v-btn>
+                </v-layout>
                 <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <!-- <v-btn color="primary">Ver descrição</v-btn> -->
+                  <v-spacer></v-spacer>                
                   <v-dialog v-model="dialogSoul" width="600px">
-                    <v-btn slot="activator" color="primary" class= "ma-2">Alma</v-btn>
                     <v-card>
                       <v-card-title>
                         <span class="headline">A ALMA de {{fullName}}?</span>
@@ -44,8 +54,10 @@
                       </v-card-actions>
                     </v-card>
                   </v-dialog>
+                </v-card-actions>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
                   <v-dialog v-model="dialogImage" width="600px">
-                    <v-btn slot="activator" color="primary" class= "ma-2">Imagem</v-btn>
                     <v-card>
                       <v-card-title>
                         <span class="headline">A Imagem de {{fullName}}?</span>
@@ -57,8 +69,10 @@
                       </v-card-actions>
                     </v-card>
                   </v-dialog>
+                </v-card-actions>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
                   <v-dialog v-model="dialogDestiny" width="600px">
-                    <v-btn slot="activator" color="primary" class= "ma-2">Destino</v-btn>
                     <v-card>
                       <v-card-title>
                         <span class="headline">O destino de {{fullName}}?</span>
@@ -70,8 +84,10 @@
                       </v-card-actions>
                     </v-card>
                   </v-dialog>
+                </v-card-actions>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
                   <v-dialog v-model="dialogCO" width="600px">
-                    <v-btn slot="activator" color="primary" class= "ma-2">Lição de Vida</v-btn>
                     <v-card>
                       <v-card-title>
                         <span class="headline">A lição de vida de {{fullName}}?</span>
