@@ -27,6 +27,9 @@
                   <p v-if="image" class="text-md-center">Imagem: {{image}} </p>
                   <p v-if="destiny" class="text-md-center">Destino: {{destiny}} </p>
                   <p v-if="destiny" class="text-md-center">Caminho de Origem: {{caminhoDeOrigem}} </p>
+                  <!-- <p v-if="destiny" class="text-md-center">Ano Pessoal: {{personalYear}} </p>
+                  <p v-if="destiny" class="text-md-center">Mes Pessoal: {{personalMonth}} </p>
+                  <p v-if="destiny" class="text-md-center">Dia Pessoal: {{personalDay}} </p> -->
                 </v-card-text>
                 <v-layout row justify-center>
                   <v-btn color="primary" dark @click.stop="dialogSoul = true" color="primary" class= "ma-2">Alma</v-btn>  <!-- slot="activator" -->
@@ -125,22 +128,7 @@
       },
       computed: {
         soulN: function() {
-          let soul = this.fullName
-          var sumSoul = 0
-          for (var i = 0; i < soul.length; i++) {
-            var currentChar = soul.charCodeAt(i)
-            if (this.vowel(soul.charAt(i))) {
-              if(currentChar >= 48 && currentChar <= 57)  //verifica se é nro - ascci entre 48 e 57 são numeros de zero a nove
-                sumSoul += currentChar - 48  //diminuir 48 para dar o valor do caractere e não seu valor ascii
-              else if (currentChar >= 65 && currentChar <= 90) //verifica se é letras - ascci entre 65 e 90 são letras maiusculas, 97 e 122 sao minusculas
-                sumSoul += this.reduce(currentChar - 64)
-              else if (currentChar >= 97 && currentChar <= 122)
-                sumSoul += this.reduce(currentChar - 96)
-            }
-          }  
-          
-          return sumSoul
-
+          return this.numberFromStr(this.fullName, 'vowel')
         },
 
         soul: function() {
@@ -148,8 +136,7 @@
         },
 
         imageN: function() {
-          
-          return this.numberFromStr(this.fullName)
+          return this.numberFromStr(this.fullName, 'consonant')
         },
 
         image: function() {
@@ -164,31 +151,6 @@
         caminhoDeOrigem: function() {
           
           return this.reduce(this.numberFromStr(this.birthdate))
-        },
-
-        mainNumber: function() {
-          let placa = this.fullName
-          var sum = 0
-          for (var i = 0; i < placa.length; i++) {
-            var currentChar = placa.charCodeAt(i)
-            if(currentChar >= 48 && currentChar <= 57)  //verifica se é nro - ascci entre 48 e 57 são numeros de zero a nove
-              sum += currentChar - 48  //diminuir 48 para dar o valor do caractere e não seu valor ascii
-            else if (currentChar >= 65 && currentChar <= 90) //verifica se é letras - ascci entre 65 e 90 são letras maiusculas, 97 e 122 sao minusculas
-              sum += currentChar - 64
-            else if (currentChar >= 97 && currentChar <= 122)
-              sum += currentChar - 96
-
-          }  
-          while(sum > 9 ){
-              temp = sum.toString()
-              var pos = 0, nroTemp = 0
-              while(pos < temp.length){
-                  nroTemp += temp.charCodeAt(pos) - 48
-                  pos++
-              }
-              sum = nroTemp
-          }
-          return sum
         },
         
         descriptionSoul: function() {
@@ -243,20 +205,37 @@
           return strNum
         },
 
-        numberFromStr: function(str) {
+        numberFromStr: function(str, strType) {
           var sumStr = 0
           for (var i = 0; i < str.length; i++) {
             var currentChar = str.charCodeAt(i)
-            if(currentChar >= 48 && currentChar <= 57)  //verifica se é nro - ascci entre 48 e 57 são numeros de zero a nove
-              sumStr += currentChar - 48  //diminuir 48 para dar o valor do caractere e não seu valor ascii
-            else if (currentChar >= 65 && currentChar <= 90) //verifica se é letras - ascci entre 65 e 90 são letras maiusculas, 97 e 122 sao minusculas
-              sumStr += this.reduce(currentChar - 64)
-            else if (currentChar >= 97 && currentChar <= 122)
-              sumStr += this.reduce(currentChar - 96)
+            switch(strType){
+              case 'vowel':
+                if (!this.vowel(str.charAt(i))) 
+                  sumStr += this.uniqueNumberFromChar(currentChar)
+                break
+              case 'consonant':
+                if (!this.vowel(str.charAt(i)))
+                  sumStr += this.uniqueNumberFromChar(currentChar)
+                break
+              case 'any':
+              default:
+                sumStr += this.uniqueNumberFromChar(currentChar)
+            }
           }  
           return sumStr
-        }
+        },
 
+        uniqueNumberFromChar: function (chr) {
+          if(chr >= 48 && chr <= 57)  //verifica se é nro - ascci entre 48 e 57 são numeros de zero a nove
+            return chr - 48  //diminuir 48 para dar o valor do caractere e não seu valor ascii
+          else if (chr >= 65 && chr <= 90) //verifica se é letras - ascci entre 65 e 90 são letras maiusculas, 97 e 122 sao minusculas
+            return this.reduce(chr - 64)
+          else if (chr >= 97 && chr <= 122)
+            return this.reduce(chr - 96)
+
+          return null
+        }
       }
     })
   </script>
