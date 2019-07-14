@@ -21,14 +21,14 @@
                 <v-card-text>
                   <v-form>
                     <v-text-field prepend-icon="account_box" v-model="fullName" name="fullname" label="Nome" type="text"></v-text-field>
-                    <v-text-field prepend-icon="date_range" v-model="birthdate" name="birthdate" label="Data de Nascimento" type="text"></v-text-field>
+                    <v-text-field prepend-icon="date_range" v-model="birthdate" name="birthdate" label="Data de Nascimento (dd/mm/yyyy)" type="text"></v-text-field> 
                   </v-form>
                   <p v-if="soul" class="text-md-center">Alma: {{soul}} </p>
                   <p v-if="image" class="text-md-center">Imagem: {{image}} </p>
                   <p v-if="destiny" class="text-md-center">Destino: {{destiny}} </p>
                   <p v-if="destiny" class="text-md-center">Caminho de Origem: {{caminhoDeOrigem}} </p>
-                  <!-- <p v-if="destiny" class="text-md-center">Ano Pessoal: {{personalYear}} </p>
-                  <p v-if="destiny" class="text-md-center">Mes Pessoal: {{personalMonth}} </p>
+                  <p v-if="destiny" class="text-md-center">Ano Pessoal: {{personalYear}} </p>
+                  <!-- <p v-if="destiny" class="text-md-center">Mes Pessoal: {{personalMonth}} </p>
                   <p v-if="destiny" class="text-md-center">Dia Pessoal: {{personalDay}} </p> -->
                 </v-card-text>
                 <v-layout row justify-center>
@@ -167,6 +167,20 @@
 
         descriptionCaminhoDeOrigem: function() {
           return caminhoDeOrigemTxt[this.caminhoDeOrigem]
+        },
+
+        personalYear: function() {
+          let dateArray = this.birthdate.split('/')
+          let birthdateDate = new Date(Number(dateArray[2]), Number(dateArray[1])-1, Number(dateArray[0]) )
+          let currentDate = new Date()
+          let calcDate = new Date(currentDate.getFullYear(), Number(dateArray[1])-1, Number(dateArray[0]) )
+          let calcPersonalYear, t1, t2
+          if(currentDate < calcDate)
+            calcPersonalYear = t1 = birthdateDate.getDate() + (birthdateDate.getMonth()+1) + (currentDate.getFullYear()-1)
+          else
+            calcPersonalYear = t2 = birthdateDate.getDate() + (birthdateDate.getMonth()+1) + currentDate.getFullYear()
+          
+          return this.reduce(calcPersonalYear)
         }
         
       },
