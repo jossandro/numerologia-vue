@@ -28,8 +28,8 @@
                   <p v-if="destiny" class="text-md-center">Destino: {{destiny}} </p>
                   <p v-if="destiny" class="text-md-center">Caminho de Origem: {{caminhoDeOrigem}} </p>
                   <p v-if="destiny" class="text-md-center">Ano Pessoal: {{personalYear}} </p>
-                  <!-- <p v-if="destiny" class="text-md-center">Mes Pessoal: {{personalMonth}} </p>
-                  <p v-if="destiny" class="text-md-center">Dia Pessoal: {{personalDay}} </p> -->
+                  <p v-if="destiny" class="text-md-center">Mes Pessoal: {{personalMonth}} </p>
+                  <p v-if="destiny" class="text-md-center">Dia Pessoal: {{personalDay}} </p>
                 </v-card-text>
                 <v-layout row justify-center>
                   <v-btn color="primary" dark @click.stop="dialogSoul = true" color="primary" class= "ma-2">Alma</v-btn>  <!-- slot="activator" -->
@@ -170,17 +170,26 @@
         },
 
         personalYear: function() {
-          let dateArray = this.birthdate.split('/')
-          let birthdateDate = new Date(Number(dateArray[2]), Number(dateArray[1])-1, Number(dateArray[0]) )
+          let birthdateDate = this.getBirthdate()
           let currentDate = new Date()
-          let calcDate = new Date(currentDate.getFullYear(), Number(dateArray[1])-1, Number(dateArray[0]) )
-          let calcPersonalYear, t1, t2
+          let calcDate = new Date(currentDate.getFullYear(), birthdateDate.getMonth(), birthdateDate.getDate() )
+          let calcPersonalYear
           if(currentDate < calcDate)
-            calcPersonalYear = t1 = birthdateDate.getDate() + (birthdateDate.getMonth()+1) + (currentDate.getFullYear()-1)
+            calcPersonalYear = birthdateDate.getDate() + (birthdateDate.getMonth()+1) + (currentDate.getFullYear()-1)
           else
-            calcPersonalYear = t2 = birthdateDate.getDate() + (birthdateDate.getMonth()+1) + currentDate.getFullYear()
+            calcPersonalYear = birthdateDate.getDate() + (birthdateDate.getMonth()+1) + currentDate.getFullYear()
           
           return this.reduce(calcPersonalYear)
+        },
+
+        personalMonth: function() {
+          let currentDate = new Date()
+          return this.reduce(this.personalYear + currentDate.getMonth() + 1)      //have to add one because getMonth returns 0 to 11
+        },
+
+        personalDay: function() {
+          let currentDate = new Date()
+          return this.reduce(this.personalYear + currentDate.getMonth() + 1 + currentDate.getDate())      //have to add one because getMonth returns 0 to 11
         }
         
       },
@@ -249,6 +258,12 @@
             return this.reduce(chr - 96)
 
           return null
+        },
+
+        getBirthdate: function() {
+          let dateArray = this.birthdate.split('/')
+          let birthdateDate = new Date(Number(dateArray[2]), Number(dateArray[1])-1, Number(dateArray[0]) )
+          return birthdateDate
         }
       }
     })
