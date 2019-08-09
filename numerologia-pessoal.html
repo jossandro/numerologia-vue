@@ -53,7 +53,7 @@
                       <v-card-text v-html="descriptionSoul"></v-card-text>
                       <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" flat="flat" @click="dialogSoul = false">Fechar</v-btn>
+                        <v-btn color="blue darken-1" text @click="dialogSoul = false">Fechar</v-btn>
                       </v-card-actions>
                     </v-card>
                   </v-dialog>
@@ -68,7 +68,7 @@
                       <v-card-text v-html="descriptionImage"></v-card-text>
                       <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" flat="flat" @click="dialogImage = false">Fechar</v-btn>
+                        <v-btn color="blue darken-1" text @click="dialogImage = false">Fechar</v-btn>
                       </v-card-actions>
                     </v-card>
                   </v-dialog>
@@ -83,7 +83,7 @@
                       <v-card-text v-html="descriptionDestiny"></v-card-text>
                       <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" flat="flat" @click="dialogDestiny = false">Fechar</v-btn>
+                        <v-btn color="blue darken-1" text @click="dialogDestiny = false">Fechar</v-btn>
                       </v-card-actions>
                     </v-card>
                   </v-dialog>
@@ -98,7 +98,7 @@
                       <v-card-text v-html="descriptionCaminhoDeOrigem"></v-card-text>
                       <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" flat="flat" @click="dialogCO = false">Fechar</v-btn>
+                        <v-btn color="blue darken-1" text @click="dialogCO = false">Fechar</v-btn>
                       </v-card-actions>
                     </v-card>
                   </v-dialog>
@@ -111,13 +111,14 @@
     </v-app>
   </div>
  
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <script src="./data.js" type="text/javascript"></script>
   <script>
     
     new Vue({ 
       el: '#app',
+      vuetify: new Vuetify(),
       data: {
         fullName: '',
         birthdate: '',
